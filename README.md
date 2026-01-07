@@ -1,160 +1,105 @@
-🛡️ Sentinel AI — Intrusion Detection System (IDS)
-Next-Generation AI-Powered Network Security using Soft Actor-Critic Reinforcement Learning
-<img width="204" height="258" alt="image" src="https://github.com/user-attachments/assets/0e4e46a8-1aaf-4d96-9810-aa2699b2c4ea" />
-
-📖 Overview
-
-Sentinel AI is an advanced AI-powered Intrusion Detection System (IDS) designed to detect and mitigate cyber attacks in real time.
-Unlike traditional rule-based IDS, Sentinel AI leverages Deep Reinforcement Learning (Soft Actor-Critic) to continuously learn network behavior and adapt to evolving attack patterns.
-
-The platform includes:
-
-🛡️ Blue Team Dashboard for defense monitoring
-
-⚔️ Red Team Console for controlled attack simulation
-
-📊 Live Cyberpunk-styled Visualization for threat analysis
-
-This project was developed as a Major Project by Sohom Mandal.
-
-✨ Key Features
-
-🧠 AI-Driven Detection
-Classifies packets as Normal or Attack using a trained SAC neural network.
-
-⚡ Real-Time Analysis
-Live packet inspection with instant feedback via WebSockets.
-
-⚔️ Red Team Console
-Simulate real-world attacks:
-
-UDP Flood (DDoS)
-
-SQL Injection (SQLi)
-
-Cross-Site Scripting (XSS)
-
-Malware Command & Control (C2)
-
-Normal Traffic (baseline behavior)
-
-🛡️ Active Mitigation Engine
-Automatically blocks malicious IPs after sustained DDoS activity and restores network stability.
-
-🖥️ Split-View Mode
-Side-by-side Attack Console + Defense Dashboard for evaluation.
-
-📊 Live Visualization
-Interactive real-time charts using Recharts displaying AI confidence levels and threat trends.
-
-🛠️ Technology Stack
-Backend
-
-FastAPI — High-performance IDS API
-
-PyTorch — Deep RL & SAC model
-
-Scikit-Learn — Feature scaling & preprocessing
-
-NumPy / Pandas — Data processing
-
-AsyncIO — Concurrent packet handling & streaming
-
-Frontend
-
-React + Vite — Lightning-fast UI
-
-Recharts — Live data visualization
-
-Lucide React — Icons
-
-TailwindCSS — Cyberpunk UI styling
-
-🚀 Installation & Setup
-Prerequisites
-
-Python 3.8+
-
-Node.js 16+
-
-⚡ Automatic Setup (Windows)
+# 🛡️ Sentinel AI - Intrusion Detection System (IDS)
+**A Next-Generation AI-Powered Network Security System utilizing Soft Actor-Critic (SAC) Reinforcement Learning.**
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Python](https://img.shields.io/badge/Backend-FastAPI%20%7C%20PyTorch-blue)
+![Frontend](https://img.shields.io/badge/Frontend-React%20%7C%20Vite%20%7C%20Recharts-cyan)
+![AI Model](https://img.shields.io/badge/Model-Soft%20Actor--Critic%20(SAC)-orange)
+---
+## 📖 Overview
+**Sentinel AI** is a fully functional Intrusion Detection System (IDS) designed to detect and mitigate network attacks in real-time. Unlike traditional rule-based IDS, Sentinel AI uses **Deep Reinforcement Learning (SAC Algorithm)** to learn traffic patterns and identify anomalies with high precision.
+The system includes a **Cyberpunk-styled Dashboard** for the Blue Team (Defenders) and a dedicated **Red Team Console** for the Attacker to simulate threats like DDoS, SQL Injection, and Malware.
+---
+## ✨ Key Features
+*   **🧠 AI-Driven Detection**: Uses a trained **Soft Actor-Critic (SAC)** neural network to classify network packets as "Normal" or "Attack".
+*   **⚡ Real-Time Analysis**: Processes live UDP packets and visualizes threat levels instantly via WebSockets.
+*   **⚔️ Red Team Console**: Built-in Attack Simulator to manually launch:
+    *   **UDP Flood (DDoS)**
+    *   **SQL Injection (SQLi)**
+    *   **Cross-Site Scripting (XSS)**
+    *   **Malware C2 Traffic**
+    *   **Normal User Traffic** (for baseline testing)
+*   **🛡️ Active Mitigation**: Automatically **BLOCKS** IP addresses after detecting sustained DDoS attacks (300+ malicious packets) and restores normal traffic flow.
+*   **🖥️ Split View Mode**: Evaluate the system effectively with a dual-pane view showing the **Attack Console** and **IDS Dashboard** side-by-side.
+*   **📊 Live Visualization**: Interactive Area Charts powered by Recharts showing AI Confidence scores over time.
+---
+## 🛠️ Technology Stack
+### **Backend (Python)**
+*   **FastAPI**: High-performance API for the IDS engine and Attacker service.
+*   **PyTorch**: Framework for the SAC Reinforcement Learning model.
+*   **Scikit-Learn**: For feature scaling (StandardScaler) and data preprocessing.
+*   **Pandas/Numpy**: Data generation and manipulation.
+*   **AsyncIO**: For handling asynchronous packet sniffing and WebSocket streaming.
+### **Frontend (React)**
+*   **Vite**: Next-generation frontend tooling.
+*   **Recharts**: For real-time data visualization graphs.
+*   **Lucide React**: Beautiful icons.
+*   **TailwindCSS**: For rapid, futuristic styling.
+---
+## 🚀 Installation & Setup
+### **Prerequisites**
+*   **Python 3.8+**
+*   **Node.js 16+**
+### **1. Automatic Setup (Windows)**
+Simply run the included batch script to install dependencies, train the model, and launch everything:
+```bash
 START_SYSTEM.bat
+2. Manual Setup
+If you prefer running components individually, open 3 Terminal Windows:
 
+Terminal 1: IDS Backend (The Brain)
 
-This installs all dependencies, trains the model, and launches the entire system.
-
-🧩 Manual Setup
-
-Open three terminals:
-
-🧠 Terminal 1 — IDS Backend
+bash
 cd "Major Project"
 pip install -r requirements.txt
 python -m uvicorn backend.ids_service:app --reload --port 8000
+Terminal 2: Attacker Service (The Simulator)
 
-⚔️ Terminal 2 — Attacker Simulator
+bash
 cd "Major Project"
 python -m uvicorn backend.attacker_service:app --reload --port 8001
+Terminal 3: Frontend ( The Dashboard)
 
-🖥️ Terminal 3 — Frontend Dashboard
+bash
 cd "Major Project/frontend"
 npm install
 npm run dev
-
 🕹️ How to Use
-
-Launch system:
-
+Launch the System: Run 
 START_SYSTEM.bat
-
-
-Open dashboard:
-http://localhost:5173 or http://localhost:5174
-
-Enable Split View from the top-right corner.
-
-Simulate traffic:
-
-NORMAL TRAFFIC → Graph remains secure (Blue/Green)
-
-SQL INJECTION → Graph spikes Red → Intrusion Detected
-
-UDP FLOOD (DDoS) → After ~15s → Mitigation Active: IP Blocked
-
+.
+Open the Dashboard: Go to http://localhost:5173 (or 5174).
+Enter Split View: Click the "SPLIT VIEW" button in the top right.
+Left Side: Your Defense Dashboard (Blue Team).
+Right Side: Your Attack Console (Red Team).
+Simulate Attacks:
+Click "NORMAL TRAFFIC": Watch the graph stay Blue/Green (Secure).
+Click "SQL INJECTION": Watch the graph spike Red and status change to "INTRUSION DETECTED".
+Click "UDP FLOOD (DDoS)": Watch the system detect the high volume. After ~15 seconds, the status will change to "MITIGATION ACTIVE: IP BLOCKED".
 📂 Project Structure
 Major Project/
 ├── backend/
-│   ├── ids_service.py
-│   ├── attacker_service.py
-│   ├── train_model.py
-│   ├── generate_data.py
-│   ├── feature_engineering.py
-│   ├── sac_actor.pth
-│   └── scaler.pkl
+│   ├── ids_service.py        # Main IDS Engine (FastAPI + AI Inference)
+│   ├── attacker_service.py   # Attack Simulation API
+│   ├── train_model.py        # SAC Training Script
+│   ├── generate_data.py      # Synthetic Dataset Generator
+│   ├── feature_engineering.py# Data Preprocessing & Scaling
+│   ├── sac_actor.pth         # Trained Model Weights
+│   └── scaler.pkl            # Saved Scaler
 ├── frontend/
 │   ├── src/
-│   │   ├── App.jsx
-│   │   ├── AttackConsole.jsx
+│   │   ├── App.jsx           # Main Routing & Dashboard Logic
+│   │   ├── AttackConsole.jsx # Red Team UI
 │   │   └── ...
-├── START_SYSTEM.bat
-├── PUSH_TO_GITHUB.bat
-└── requirements.txt
+├── START_SYSTEM.bat          # One-click Launcher
+├── PUSH_TO_GITHUB.bat        # Git Automation Script
+└── requirements.txt          # Python Dependencies
+🤖 Model Details (SAC)
+The system uses Soft Actor-Critic, an off-policy reinforcement learning algorithm.
 
-🤖 Model Architecture — Soft Actor-Critic (SAC)
+State Space: 12 features (Duration, Src/Dst Bytes, Count, Error Rate, etc.)
+Action Space: Continuous (mapped to Binary Classification: Normal vs Attack).
+Reward System: +1 for correct classification, -1 for incorrect.
+Developed by Sohom Mandal for Major Project.
 
-State Space: 12 network features
 
-Action Space: Continuous → mapped to binary classification
-
-Reward Function:
-
-+1 → Correct classification
-
--1 → Incorrect classification
-
-Learning: Off-policy deep reinforcement learning
-
-👨‍💻 Author
-
-Sohom Mandal
-Major Project — Cybersecurity & Artificial Intelligence
+make it perfect for read me for github
